@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        header {
+            padding: 12px;
+            background-color: #1C1C1C;
+            color: #fff;
+            font-size: 19px;
+        }
+    </style>
+
+    <title>user information</title>
+</head>
+<body>
+
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <b th:text="${user.getName()}">DATA</b>
+            <div th:text="'with roles: ' + ${user.getClearRoles()}" class="col">DATA</div>
+
+            <div class="btn btn-link">
+                <form th:method="POST" th:action="@{/appLogout}">
+                    <input type="submit" class="btn btn-link link-secondary" value="Logout"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col-2 container-fluid">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+            <a class="nav-link active" id="v-pills-userinfo-tab" data-toggle="pill" href="#v-pills-userinfo"
+               role="tab" aria-controls="v-pills-userinfo" aria-selected="true">User</a>
+        </div>
+    </div>
+
+    <div class="col" style="background: #FAFAFA;">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-userinfo" role="tabpanel" aria-labelledby="v-pills-userinfo-tab">
+
+                <h1>User information page</h1>
+
+                <table class="table container-fluid">
+                    <thead>
+                    <div class="row border"  style="background: #EEEEEE; padding: 12px; font-size: 20px">About user</div>
+
+                    <tr class="row">
+                        <th class="col">ID</th>
+                        <th class="col">Name</th>
+                        <th class="col">Height</th>
+                        <th class="col">Role</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+
+                    <tr class="row">
+                        <td class="col" th:text="${user.getId()}">DATA</td>
+                        <td class="col" th:text="${user.getName()}">DATA</td>
+                        <td class="col" th:text="${user.getHeight()}">DATA</td>
+                        <td class="col" th:text="${user.getClearRoles()}">DATA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
